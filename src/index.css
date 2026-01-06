@@ -1,0 +1,280 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Campaign Brand Colors */
+    --background: 210 20% 98%;
+    --foreground: 210 50% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 210 50% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 50% 10%;
+
+    /* Deep Authority Blue */
+    --primary: 202 85% 28%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary */
+    --secondary: 210 20% 96%;
+    --secondary-foreground: 202 85% 28%;
+
+    --muted: 210 20% 94%;
+    --muted-foreground: 210 10% 40%;
+
+    /* Vibrant Action Green */
+    --accent: 88 55% 49%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 210 20% 90%;
+    --input: 210 20% 90%;
+    --ring: 202 85% 28%;
+
+    --radius: 0.5rem;
+
+    /* Custom Campaign Colors */
+    --campaign-blue: 202 85% 28%;
+    --campaign-green: 88 55% 49%;
+    --campaign-navy: 212 70% 14%;
+    --campaign-charcoal: 195 10% 20%;
+    --campaign-light: 210 20% 98%;
+    --campaign-divider: 210 20% 92%;
+
+    /* Sidebar */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 202 85% 28%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 88 55% 49%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 210 20% 90%;
+    --sidebar-ring: 202 85% 28%;
+  }
+
+  .dark {
+    --background: 212 70% 8%;
+    --foreground: 210 20% 98%;
+
+    --card: 212 70% 12%;
+    --card-foreground: 210 20% 98%;
+
+    --popover: 212 70% 12%;
+    --popover-foreground: 210 20% 98%;
+
+    --primary: 88 55% 49%;
+    --primary-foreground: 212 70% 8%;
+
+    --secondary: 212 50% 20%;
+    --secondary-foreground: 210 20% 98%;
+
+    --muted: 212 50% 18%;
+    --muted-foreground: 210 15% 65%;
+
+    --accent: 202 85% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 210 20% 98%;
+
+    --border: 212 50% 20%;
+    --input: 212 50% 20%;
+    --ring: 88 55% 49%;
+
+    --sidebar-background: 212 70% 10%;
+    --sidebar-foreground: 210 20% 98%;
+    --sidebar-primary: 88 55% 49%;
+    --sidebar-primary-foreground: 212 70% 8%;
+    --sidebar-accent: 202 85% 45%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 212 50% 18%;
+    --sidebar-ring: 88 55% 49%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+  }
+}
+
+@layer components {
+  .gradient-hero {
+    background: linear-gradient(135deg, hsla(202, 85%, 28%, 0.95) 0%, hsla(88, 55%, 49%, 0.85) 100%);
+  }
+
+  .gradient-button {
+    background: linear-gradient(90deg, hsl(var(--accent)) 0%, hsl(var(--primary)) 100%);
+  }
+
+  .gradient-divider {
+    background: linear-gradient(to right, transparent, hsl(var(--primary)), transparent);
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .shadow-campaign {
+    box-shadow: 0 10px 40px hsla(202, 85%, 28%, 0.15);
+  }
+
+  .shadow-campaign-lg {
+    box-shadow: 0 20px 60px hsla(202, 85%, 28%, 0.2);
+  }
+
+  .shadow-glow-green {
+    box-shadow: 0 0 40px hsla(88, 55%, 49%, 0.4);
+  }
+
+  .emboss-effect {
+    box-shadow: inset 0 -2px 10px rgba(0,0,0,0.2), 0 2px 10px rgba(255,255,255,0.5);
+  }
+
+  /* Story link underline animation */
+  .story-link {
+    @apply relative inline-block;
+  }
+
+  .story-link::after {
+    content: '';
+    @apply absolute w-full scale-x-0 h-0.5 bottom-0 left-0 bg-accent origin-bottom-right transition-transform duration-300;
+  }
+
+  .story-link:hover::after {
+    @apply scale-x-100 origin-bottom-left;
+  }
+
+  /* Hover scale */
+  .hover-scale {
+    @apply transition-transform duration-200 hover:scale-105;
+  }
+
+  /* Glass effect */
+  .glass {
+    @apply bg-white/80 backdrop-blur-md;
+  }
+
+  .glass-dark {
+    @apply bg-campaign-navy/90 backdrop-blur-md;
+  }
+
+  /* Card lift effect */
+  .card-lift {
+    @apply transition-all duration-300;
+  }
+
+  .card-lift:hover {
+    @apply -translate-y-2 shadow-campaign-lg;
+  }
+
+  /* Focus styles for accessibility */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  .animate-slide-in-right {
+    animation: slideInRight 0.3s ease-out forwards;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes slideInRight {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes spin-slow {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .animate-spin-slow {
+    animation: spin-slow 30s linear infinite;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
